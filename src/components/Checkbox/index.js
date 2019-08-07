@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import { TYPE } from '../../Theme'
 import { RowFixed } from '../Row'
@@ -7,17 +8,6 @@ const StyleCheckbox = styled.input`
 
   :before {
     background: #f35429;
-  }
-
-  :hover {
-    cursor: pointer;
-  }
-`
-
-const ButtonText = styled(TYPE.main)`
-  cursor: pointer;
-  :hover {
-    opacity: 0.6;
   }
 `
 

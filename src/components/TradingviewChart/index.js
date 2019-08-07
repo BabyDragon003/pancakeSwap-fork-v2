@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from 'react'
 import { createChart } from 'lightweight-charts'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
@@ -7,17 +8,6 @@ import { usePrevious } from 'react-use'
 import { Play } from 'react-feather'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import { IconWrapper } from '..'
-
-dayjs.extend(utc)
-
-export const CHART_TYPES = {
-  BAR: 'BAR',
-  AREA: 'AREA',
-}
-
-const Wrapper = styled.div`
-  position: relative;
-`
 
 // constant height for charts
 const HEIGHT = 300
