@@ -8,16 +8,11 @@ import { StyledIcon } from '..'
 
 const Base = styled(RebassButton)`
   padding: 8px 12px;
-const BaseCustom = styled(RebassButton)`
-  padding: 16px 12px;
   font-size: 0.825rem;
-  font-weight: 400;
+  font-weight: 600;
   border-radius: 12px;
   cursor: pointer;
   outline: none;
-`
-
-const Dull = styled(Base)`
   background-color: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: black;
