@@ -13,24 +13,14 @@ const TextWrapper = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-          onMouseLeave={() => setShowHover(false)}
-          margin={margin}
-          adjustSize={adjustSize}
-          link={link}
-          fontSize={fontSize}
-          {...rest}
-        >
-          {' ' + text.slice(0, maxCharacters - 1) + '...'}
-        </TextWrapper>
-      </Tooltip>
-    )
+    font-size: ${({ adjustSize }) => adjustSize && '12px'};
   }
+`
 
-  return (
-    <TextWrapper margin={margin} adjustSize={adjustSize} link={link} fontSize={fontSize} {...rest}>
-      {text}
-    </TextWrapper>
-  )
-}
+const FormattedName = ({ text, maxCharacters, margin = false, adjustSize = false, fontSize, link, ...rest }) => {
+  const [showHover, setShowHover] = useState(false)
 
+  if (!text) {
+    return ''
+  }
 export default FormattedName
