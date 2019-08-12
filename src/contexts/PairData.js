@@ -1,4 +1,3 @@
-import React, { createContext, useContext, useReducer, useMemo, useCallback, useEffect, useState } from 'react'
 
 import { client } from '../apollo/client'
 import {
@@ -23,6 +22,32 @@ import {
   getBlocksFromTimestamps,
   getTimestampsForChanges,
   splitQuery,
+} from '../utils'
+import { timeframeOptions, TRACKED_OVERRIDES_PAIRS, TRACKED_OVERRIDES_TOKENS } from '../constants'
+import { useLatestBlocks } from './Application'
+import { updateNameData } from '../utils/data'
+
+const UPDATE = 'UPDATE'
+const UPDATE_PAIR_TXNS = 'UPDATE_PAIR_TXNS'
+const UPDATE_CHART_DATA = 'UPDATE_CHART_DATA'
+const UPDATE_TOP_PAIRS = 'UPDATE_TOP_PAIRS'
+const UPDATE_HOURLY_DATA = 'UPDATE_HOURLY_DATA'
+
+dayjs.extend(utc)
+
+export function safeAccess(object, path) {
+  return object
+    ? path.reduce(
+        (accumulator, currentValue) => (accumulator && accumulator[currentValue] ? accumulator[currentValue] : null),
+        object
+      )
+    : null
+}
+
+const PairDataContext = createContext()
+
+function usePairDataContext() {
+  return useContext(PairDataContext)
 }
 
 function reducer(state, { type, payload }) {
