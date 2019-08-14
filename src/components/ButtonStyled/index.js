@@ -1,3 +1,4 @@
+import React from 'react'
 import { Button as RebassButton } from 'rebass/styled-components'
 import styled from 'styled-components'
 import { Plus, ChevronDown, ChevronUp } from 'react-feather'
@@ -7,17 +8,6 @@ import { StyledIcon } from '..'
 
 const Base = styled(RebassButton)`
   padding: 8px 12px;
-  font-size: 0.825rem;
-  font-weight: 600;
-  border-radius: 12px;
-  cursor: pointer;
-  outline: none;
-  border: 1px solid transparent;
-  outline: none;
-  border-bottom-right-radius: ${({ open }) => open && '0'};
-  border-bottom-left-radius: ${({ open }) => open && '0'};
-`
-
 const BaseCustom = styled(RebassButton)`
   padding: 16px 12px;
   font-size: 0.825rem;
