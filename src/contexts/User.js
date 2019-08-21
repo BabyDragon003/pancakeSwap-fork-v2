@@ -1,3 +1,4 @@
+import React, { createContext, useContext, useReducer, useMemo, useCallback, useEffect, useState } from 'react'
 import { useAllPairData, usePairData } from './PairData'
 import { client, stakingClient } from '../apollo/client'
 import {
