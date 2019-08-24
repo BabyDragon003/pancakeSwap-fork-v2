@@ -18,16 +18,11 @@ import { Bookmark, Activity } from 'react-feather'
 import Link from '../components/Link'
 import { FEE_WARNING_TOKENS } from '../constants'
 import { BasicLink } from '../components/Link'
-  margin-bottom: 1rem;
-  border: 1px solid #edeef2;
-  border-radius: 12px;
-`
+import { useMedia } from 'react-use'
+import Search from '../components/Search'
+import { useSavedAccounts } from '../contexts/LocalStorage'
 
-const Flyout = styled.div`
-  position: absolute;
-  top: 38px;
-  left: -1px;
-  width: 100%;
+const AccountWrapper = styled.div`
   background-color: ${({ theme }) => theme.bg1};
   z-index: 999;
   border-bottom-right-radius: 10px;

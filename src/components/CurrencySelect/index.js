@@ -23,32 +23,6 @@ const Select = styled.div`
   :hover {
     cursor: pointer;
   }
-
-  @media screen and (max-width: 40em) {
-    display: none;
-  }
-`
-
-const ArrowStyled = styled(Arrow)`
-  height: 20px;
-  width: 20px;
-  margin-left: 6px;
-`
-
-const Option = styled(Row)`
-  position: absolute;
-  top: 40px;
-`
-
-const CurrencySelect = () => {
-  const [showDropdown, toggleDropdown] = useState(false)
-  const [currency, toggleCurrency] = useCurrentCurrency()
-
-  const getOther = () => {
-    if (currency === 'USD') {
-      return 'ETH'
-    } else {
-      return 'USD'
     }
   }
 
