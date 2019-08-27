@@ -1,13 +1,8 @@
+import React, { useEffect } from 'react'
 import 'feather-icons'
 
 import TopTokenList from '../components/TokenList'
 import { TYPE } from '../Theme'
-import Panel from '../components/Panel'
-import { useAllTokenData } from '../contexts/TokenData'
-import { PageWrapper, FullWrapper } from '../components'
-import { RowBetween } from '../components/Row'
-import Search from '../components/Search'
-import { useMedia } from 'react-use'
 // import CheckBox from '../components/Checkbox'
 // import QuestionHelper from '../components/QuestionHelper'
 
