@@ -3,16 +3,11 @@ import React, { createContext, useContext, useReducer, useMemo, useCallback, use
 import { client } from '../apollo/client'
 import {
   PAIR_DATA,
-} from '../apollo/queries'
-
-import { useEthPrice } from './GlobalData'
-
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
-
-import {
-  getPercentChange,
-  get2DayPercentChange,
+  PAIR_CHART,
+  FILTERED_TRANSACTIONS,
+  PAIRS_CURRENT,
+  PAIRS_BULK,
+  PAIRS_HISTORICAL_BULK,
   isAddress,
   getBlocksFromTimestamps,
   getTimestampsForChanges,
