@@ -1,4 +1,3 @@
-import { Placement } from '@popperjs/core'
 import { transparentize } from 'polished'
 import React, { useState } from 'react'
 import { usePopper } from 'react-popper'
