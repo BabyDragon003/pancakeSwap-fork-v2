@@ -13,6 +13,22 @@ const WrappedLink = ({ external, children, ...rest }) => (
     {...rest}
   >
     {children}
+  </RebassLink>
+)
+
+WrappedLink.propTypes = {
+  external: PropTypes.bool,
+}
+
+const Link = styled(WrappedLink)`
+  color: ${({ color, theme }) => (color ? color : theme.link)};
+`
+
+export default Link
+
+export const CustomLink = styled(RouterLink)`
+  text-decoration: none;
+  font-size: 14px;
   font-weight: 500;
   color: ${({ color, theme }) => (color ? color : theme.link)};
 

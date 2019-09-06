@@ -14,6 +14,22 @@ const theme = (darkMode, color) => ({
   customColor: color,
   textColor: darkMode ? color : 'black',
 
+  panelColor: darkMode ? 'rgba(255, 255, 255, 0)' : 'rgba(255, 255, 255, 0)',
+  backgroundColor: darkMode ? '#212429' : '#F7F8FA',
+
+  uniswapPink: darkMode ? '#ff007a' : 'black',
+
+  concreteGray: darkMode ? '#292C2F' : '#FAFAFA',
+  inputBackground: darkMode ? '#1F1F1F' : '#FAFAFA',
+  shadowColor: darkMode ? '#000' : '#2F80ED',
+  mercuryGray: darkMode ? '#333333' : '#E1E1E1',
+
+  text1: darkMode ? '#FAFAFA' : '#1F1F1F',
+  text2: darkMode ? '#C3C5CB' : '#565A69',
+  text3: darkMode ? '#6C7284' : '#888D9B',
+  text4: darkMode ? '#565A69' : '#C3C5CB',
+  text5: darkMode ? '#2C2F36' : '#EDEEF2',
+
   // special case text types
   white: '#FFFFFF',
 

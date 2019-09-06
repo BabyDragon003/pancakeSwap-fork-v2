@@ -13,6 +13,22 @@ export function useColor(tokenAddress, token) {
     )}/logo.png`
     if (path) {
       Vibrant.from(path).getPalette((err, palette) => {
+        if (palette && palette.Vibrant) {
+          let detectedHex = palette.Vibrant.hex
+          let AAscore = hex(detectedHex, '#FFF')
+          while (AAscore < 3) {
+            detectedHex = shade(0.005, detectedHex)
+            AAscore = hex(detectedHex, '#FFF')
+          }
+          if (token === 'DAI') {
+            setColor('#FAAB14')
+          } else {
+            setColor(detectedHex)
+          }
+        }
+      })
+    }
+  }
   return color
 }
 
