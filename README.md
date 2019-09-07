@@ -18,3 +18,4 @@ yarn
 ###### Running locally
 ```bash
 yarn start
+```

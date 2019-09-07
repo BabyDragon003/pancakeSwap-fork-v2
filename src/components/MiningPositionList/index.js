@@ -18,6 +18,27 @@ import FormattedName from '../FormattedName'
 
 dayjs.extend(utc)
 
+const PageButtons = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+`
+
+const Arrow = styled.div`
+  color: ${({ theme }) => theme.primary1};
+  opacity: ${(props) => (props.faded ? 0.3 : 1)};
+  padding: 0 20px;
+  user-select: none;
+  :hover {
+    cursor: pointer;
+  }
+`
+
+const List = styled(Box)`
+  -webkit-overflow-scrolling: touch;
+`
 
 const DashGrid = styled.div`
   display: grid;
@@ -226,3 +247,17 @@ function MiningPositionList({ miningPositions }) {
       </DashGrid>
       <Divider />
       <List p={0}>{!miningPositionsSorted ? <LocalLoader /> : miningPositionsSorted}</List>
+      <PageButtons>
+        <div onClick={() => setPage(page === 1 ? page : page - 1)}>
+          <Arrow faded={page === 1}>←</Arrow>
+        </div>
+        <TYPE.body>{'Page ' + page + ' of ' + maxPage}</TYPE.body>
+        <div onClick={() => setPage(page === maxPage ? page : page + 1)}>
+          <Arrow faded={page === maxPage}>→</Arrow>
+        </div>
+      </PageButtons>
+    </ListWrapper>
+  )
+}
+
+export default withRouter(MiningPositionList)
