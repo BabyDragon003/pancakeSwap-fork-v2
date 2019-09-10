@@ -1,3 +1,4 @@
+import { Box as RebassBox } from 'rebass'
 import styled, { css } from 'styled-components'
 
 const panelPseudo = css`
