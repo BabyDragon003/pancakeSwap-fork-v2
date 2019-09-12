@@ -3,26 +3,16 @@ const color = theme.colors
 
 export const customStyles = {
   control: (styles, state) => ({
+    ...styles,
+    borderRadius: 20,
+    backgroundColor: 'white',
+    color: '#6C7284',
+    maxHeight: '32px',
+    margin: 0,
     padding: 0,
     border: 'none',
     boxShadow: 'none',
     ':hover': {
-      borderColor: color.zircon,
-      cursor: 'pointer',
-      overflow: 'hidden',
-    },
-  }),
-  placeholder: (styles) => ({
-    ...styles,
-    color: '#6C7284',
-  }),
-  input: (styles) => ({
-    ...styles,
-    color: '#6C7284',
-    overflow: 'hidden',
-  }),
-  singleValue: (styles) => ({
-    ...styles,
     color: '#6C7284',
     width: '100%',
     paddingRight: '8px',

@@ -3,6 +3,12 @@ import styled from 'styled-components'
 import { RowFixed, RowBetween } from '../Row'
 import { useMedia } from 'react-use'
 import { useGlobalData, useEthPrice } from '../../contexts/GlobalData'
+import { formattedNum, localNumber } from '../../utils'
+
+import UniPrice from '../UniPrice'
+import { TYPE } from '../../Theme'
+
+const Header = styled.div`
   width: 100%;
   position: sticky;
   top: 0;

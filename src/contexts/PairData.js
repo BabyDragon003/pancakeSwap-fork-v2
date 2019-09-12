@@ -3,26 +3,16 @@ import React, { createContext, useContext, useReducer, useMemo, useCallback, use
 import { client } from '../apollo/client'
 import {
   PAIR_DATA,
+  PAIR_CHART,
+  FILTERED_TRANSACTIONS,
+  PAIRS_CURRENT,
+  PAIRS_BULK,
+  PAIRS_HISTORICAL_BULK,
+  HOURLY_PAIR_RATES,
 } from '../apollo/queries'
 
 import { useEthPrice } from './GlobalData'
 
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
-
-import {
-  getPercentChange,
-  get2DayPercentChange,
-  isAddress,
-  getBlocksFromTimestamps,
-  getTimestampsForChanges,
-  splitQuery,
-} from '../utils'
-import { timeframeOptions, TRACKED_OVERRIDES_PAIRS, TRACKED_OVERRIDES_TOKENS } from '../constants'
-import { useLatestBlocks } from './Application'
-import { updateNameData } from '../utils/data'
-
-const UPDATE = 'UPDATE'
 const UPDATE_PAIR_TXNS = 'UPDATE_PAIR_TXNS'
 const UPDATE_CHART_DATA = 'UPDATE_CHART_DATA'
 const UPDATE_TOP_PAIRS = 'UPDATE_TOP_PAIRS'

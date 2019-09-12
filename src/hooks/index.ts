@@ -3,26 +3,16 @@ import { shade } from 'polished'
 import Vibrant from 'node-vibrant'
 import { hex } from 'wcag-contrast'
 import { isAddress } from '../utils'
+import copy from 'copy-to-clipboard'
+
+export function useColor(tokenAddress, token) {
+  const [color, setColor] = useState('#2172E5')
+  if (tokenAddress) {
+    const path = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${isAddress(
       tokenAddress
     )}/logo.png`
     if (path) {
       Vibrant.from(path).getPalette((err, palette) => {
-        if (palette && palette.Vibrant) {
-          let detectedHex = palette.Vibrant.hex
-          let AAscore = hex(detectedHex, '#FFF')
-          while (AAscore < 3) {
-            detectedHex = shade(0.005, detectedHex)
-            AAscore = hex(detectedHex, '#FFF')
-          }
-          if (token === 'DAI') {
-            setColor('#FAAB14')
-          } else {
-            setColor(detectedHex)
-          }
-        }
-      })
-    }
-  }
   return color
 }
 

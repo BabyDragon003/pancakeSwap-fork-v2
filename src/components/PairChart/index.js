@@ -3,26 +3,16 @@ import styled from 'styled-components'
 import { Area, XAxis, YAxis, ResponsiveContainer, Tooltip, AreaChart, BarChart, Bar } from 'recharts'
 import { RowBetween, AutoRow } from '../Row'
 
+import { toK, toNiceDate, toNiceDateYear, formattedNum, getTimeframe } from '../../utils'
+import { OptionButton } from '../ButtonStyled'
+import { darken } from 'polished'
+import { usePairChartData, useHourlyRateData, usePairData } from '../../contexts/PairData'
+import { timeframeOptions } from '../../constants'
+import { useMedia } from 'react-use'
 import { EmptyCard } from '..'
 import DropdownSelect from '../DropdownSelect'
 import CandleStickChart from '../CandleChart'
 import LocalLoader from '../LocalLoader'
-import { useDarkModeManager } from '../../contexts/LocalStorage'
-
-const ChartWrapper = styled.div`
-  height: 100%;
-  max-height: 340px;
-
-  @media screen and (max-width: 600px) {
-    min-height: 200px;
-  }
-`
-
-const OptionsRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin-bottom: 40px;
 `
 
 const CHART_VIEW = {

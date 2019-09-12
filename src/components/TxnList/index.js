@@ -3,26 +3,16 @@ import styled from 'styled-components'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
+import { formatTime, formattedNum, urls } from '../../utils'
+import { useMedia } from 'react-use'
+import { useCurrentCurrency } from '../../contexts/Application'
+import { RowFixed, RowBetween } from '../Row'
+
+import LocalLoader from '../LocalLoader'
 import { Box, Flex, Text } from 'rebass'
 import Link from '../Link'
 import { Divider, EmptyCard } from '..'
 import DropdownSelect from '../DropdownSelect'
-import FormattedName from '../FormattedName'
-import { TYPE } from '../../Theme'
-import { updateNameData } from '../../utils/data'
-
-dayjs.extend(utc)
-
-const PageButtons = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 2em;
-  margin-bottom: 0.5em;
-`
-
-const Arrow = styled.div`
-  color: #2f80ed;
   opacity: ${(props) => (props.faded ? 0.3 : 1)};
   padding: 0 20px;
   user-select: none;

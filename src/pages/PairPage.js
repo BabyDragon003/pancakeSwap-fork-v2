@@ -3,6 +3,12 @@ import { withRouter } from 'react-router-dom'
 import 'feather-icons'
 import styled from 'styled-components'
 import Panel from '../components/Panel'
+import {
+  PageWrapper,
+  ContentWrapperLarge,
+  StyledIcon,
+  BlockedWrapper,
+  BlockedMessageWrapper,
 } from '../components/index'
 import { AutoRow, RowBetween, RowFixed } from '../components/Row'
 import Column, { AutoColumn } from '../components/Column'

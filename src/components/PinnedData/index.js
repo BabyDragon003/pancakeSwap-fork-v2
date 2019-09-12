@@ -3,26 +3,16 @@ import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import { RowBetween, RowFixed } from '../Row'
 import { AutoColumn } from '../Column'
+import { TYPE } from '../../Theme'
+import { useSavedTokens, useSavedPairs } from '../../contexts/LocalStorage'
+import { Hover } from '..'
+import TokenLogo from '../TokenLogo'
+import AccountSearch from '../AccountSearch'
+import { Bookmark, ChevronRight, X } from 'react-feather'
 import { ButtonFaded } from '../ButtonStyled'
 import FormattedName from '../FormattedName'
 
 const RightColumn = styled.div`
-  position: fixed;
-  right: 0;
-  top: 0px;
-  height: 100vh;
-  width: ${({ open }) => (open ? '160px' : '23px')};
-  padding: 1.25rem;
-  border-left: ${({ theme, open }) => '1px solid' + theme.bg3};
-  background-color: ${({ theme }) => theme.bg1};
-  z-index: 9999;
-  overflow: auto;
-  :hover {
-    cursor: pointer;
-  }
-`
-
-const SavedButton = styled(RowBetween)`
   padding-bottom: ${({ open }) => open && '20px'};
   border-bottom: ${({ theme, open }) => open && '1px solid' + theme.bg3};
   margin-bottom: ${({ open }) => open && '1.25rem'};

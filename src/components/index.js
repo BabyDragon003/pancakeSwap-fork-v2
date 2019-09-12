@@ -3,26 +3,16 @@ import styled from 'styled-components'
 import { Text, Box } from 'rebass'
 
 import Link from './Link'
+
+import { urls } from '../utils'
+
+const Divider = styled(Box)`
+  height: 1px;
+  background-color: ${({ theme }) => theme.divider};
 `
 
 export const BlockedWrapper = styled.div`
   width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-export const BlockedMessageWrapper = styled.div`
-  border: 1px solid ${({ theme }) => theme.text3};
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  max-width: 80%;
-`
-
 export const IconWrapper = styled.div`
   position: absolute;
   right: 0;
