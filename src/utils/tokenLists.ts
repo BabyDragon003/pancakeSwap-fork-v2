@@ -13,16 +13,11 @@ function uriToHttp(uri: string): string[] {
       return [uri]
     case 'http':
       return ['https' + uri.substr(4), uri]
- */
-export default async function getTokenList(listUrl: string): Promise<TokenList> {
-  const urls = uriToHttp(listUrl)
-  for (let i = 0; i < urls.length; i++) {
-    const url = urls[i]
-    const isLast = i === urls.length - 1
-    let response
-    try {
-      response = await fetch(url)
-    } catch (error) {
+    case 'ipfs':
+      const hash = uri.match(/^ipfs:(\/\/)?(.*)$/i)?.[2]
+      return [`https://cloudflare-ipfs.com/ipfs/${hash}/`, `https://ipfs.io/ipfs/${hash}/`]
+    case 'ipns':
+      const name = uri.match(/^ipns:(\/\/)?(.*)$/i)?.[2]
       console.debug('Failed to fetch list', listUrl, error)
 
       continue

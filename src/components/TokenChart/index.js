@@ -13,6 +13,22 @@ import DropdownSelect from '../DropdownSelect'
 import CandleStickChart from '../CandleChart'
 import LocalLoader from '../LocalLoader'
 import { AutoColumn } from '../Column'
+import { Activity } from 'react-feather'
+import { useDarkModeManager } from '../../contexts/LocalStorage'
+
+const ChartWrapper = styled.div`
+  height: 100%;
+  min-height: 300px;
+
+  @media screen and (max-width: 600px) {
+    min-height: 200px;
+  }
+`
+
+const PriceOption = styled(OptionButton)`
+  border-radius: 2px;
+`
+
 const CHART_VIEW = {
   VOLUME: 'Volume',
   LIQUIDITY: 'Liquidity',

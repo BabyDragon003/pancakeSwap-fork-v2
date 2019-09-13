@@ -18,27 +18,6 @@ export const CHART_TYPES = {
 
 const Wrapper = styled.div`
   position: relative;
-`
-
-// constant height for charts
-const HEIGHT = 300
-
-const TradingViewChart = ({
-  type = CHART_TYPES.BAR,
-  data,
-  base,
-  baseChange,
-  field,
-  title,
-  width,
-  useWeekly = false,
-}) => {
-  // reference for DOM element to create with chart
-  const ref = useRef()
-
-  // pointer to the chart object
-  const [chartCreated, setChartCreated] = useState(false)
-  const dataPrev = usePrevious(data)
 
   useEffect(() => {
     if (data !== dataPrev && chartCreated && type === CHART_TYPES.BAR) {
