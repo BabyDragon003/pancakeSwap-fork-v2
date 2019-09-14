@@ -18,6 +18,27 @@ import utc from 'dayjs/plugin/utc'
 
 import {
   get2DayPercentChange,
+  getPercentChange,
+  getBlockFromTimestamp,
+  isAddress,
+  getBlocksFromTimestamps,
+  splitQuery,
+} from '../utils'
+import { timeframeOptions } from '../constants'
+import { useLatestBlocks } from './Application'
+import { updateNameData } from '../utils/data'
+
+const UPDATE = 'UPDATE'
+const UPDATE_TOKEN_TXNS = 'UPDATE_TOKEN_TXNS'
+const UPDATE_CHART_DATA = 'UPDATE_CHART_DATA'
+const UPDATE_PRICE_DATA = 'UPDATE_PRICE_DATA'
+const UPDATE_TOP_TOKENS = ' UPDATE_TOP_TOKENS'
+const UPDATE_ALL_PAIRS = 'UPDATE_ALL_PAIRS'
+const UPDATE_COMBINED = 'UPDATE_COMBINED'
+
+const TOKEN_PAIRS_KEY = 'TOKEN_PAIRS_KEY'
+
+dayjs.extend(utc)
 
 const TokenDataContext = createContext()
 
