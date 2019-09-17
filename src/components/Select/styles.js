@@ -1,13 +1,8 @@
+import theme from '../Theme/theme'
 const color = theme.colors
 
 export const customStyles = {
   control: (styles, state) => ({
-    ...styles,
-    borderRadius: 20,
-    backgroundColor: 'white',
-    color: '#6C7284',
-    maxHeight: '32px',
-    margin: 0,
     padding: 0,
     border: 'none',
     boxShadow: 'none',

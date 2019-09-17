@@ -1,13 +1,8 @@
+import React from 'react'
 import { Button as RebassButton } from 'rebass/styled-components'
 import styled from 'styled-components'
 import { Plus, ChevronDown, ChevronUp } from 'react-feather'
 import { darken, transparentize } from 'polished'
-import { RowBetween } from '../Row'
-import { StyledIcon } from '..'
-
-const Base = styled(RebassButton)`
-  padding: 8px 12px;
-  font-size: 0.825rem;
   font-weight: 600;
   border-radius: 12px;
   cursor: pointer;
