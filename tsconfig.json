@@ -3,14 +3,9 @@
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "downlevelIteration": true,
-    "allowSyntheticDefaultImports": true,
-    "types": ["react-spring", "jest"]
-  },
-  "exclude": ["node_modules", "cypress"],
-  "include": ["**/*.js", "**/*.ts", "**/*.tsx", "src/components/analytics/GoogleAnalyticsReporter.jsx"]
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
 }
