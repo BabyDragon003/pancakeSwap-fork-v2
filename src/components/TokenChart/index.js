@@ -8,6 +8,17 @@ import { OptionButton } from '../ButtonStyled'
 import { darken } from 'polished'
 import { useMedia, usePrevious } from 'react-use'
 import { timeframeOptions } from '../../constants'
+import { useTokenChartData, useTokenPriceData } from '../../contexts/TokenData'
+import DropdownSelect from '../DropdownSelect'
+import CandleStickChart from '../CandleChart'
+import LocalLoader from '../LocalLoader'
+import { AutoColumn } from '../Column'
+import { Activity } from 'react-feather'
+import { useDarkModeManager } from '../../contexts/LocalStorage'
+
+const ChartWrapper = styled.div`
+  height: 100%;
+  min-height: 300px;
 
   @media screen and (max-width: 600px) {
     min-height: 200px;
