@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import { Box } from 'rebass/styled-components'
 
 const Row = styled(Box)`

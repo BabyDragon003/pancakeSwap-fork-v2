@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { AutoColumn } from '../Column'
 import Title from '../Title'
