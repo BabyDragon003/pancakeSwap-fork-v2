@@ -1,3 +1,4 @@
+interface BasicData {
   token0?: {
     id: string
     name: string

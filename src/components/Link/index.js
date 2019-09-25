@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link as RebassLink } from 'rebass'
 import { Link as RouterLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
