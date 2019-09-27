@@ -13,6 +13,22 @@ import { EmptyCard } from '..'
 import DropdownSelect from '../DropdownSelect'
 import CandleStickChart from '../CandleChart'
 import LocalLoader from '../LocalLoader'
+import { useDarkModeManager } from '../../contexts/LocalStorage'
+
+const ChartWrapper = styled.div`
+  height: 100%;
+  max-height: 340px;
+
+  @media screen and (max-width: 600px) {
+    min-height: 200px;
+  }
+`
+
+const OptionsRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 40px;
 `
 
 const CHART_VIEW = {

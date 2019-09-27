@@ -13,16 +13,11 @@ export const timeframeOptions = {
 
 // token list urls to fetch tokens from - use for warnings on tokens and pairs
 export const SUPPORTED_LIST_URLS__NO_ENS = [
-  '0x3d7e683fc9c86b4d653c9e47ca12517440fad14e',
-  '0xfae9c647ad7d89e738aba720acf09af93dc535f7',
-  '0x7296368fe9bcb25d3ecc19af13655b907818cc09',
+  'https://gateway.ipfs.io/ipns/tokens.uniswap.org',
+  'https://www.coingecko.com/tokens_list/uniswap/defi_100/v_0_0_0.json',
 ]
 
-// pair blacklist
-export const PAIR_BLACKLIST = [
-  '0xb6a741f37d6e455ebcc9f17e2c16d0586c3f57a5',
-  '0x97cb8cbe91227ba87fc21aaf52c4212d245da3f8',
-  '0x1acba73121d5f63d8ea40bdc64edb594bd88ed09',
+// hide from overview list
   '0x7d7e813082ef6c143277c71786e5be626ec77b20',
 ]
 
