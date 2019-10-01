@@ -3,12 +3,6 @@ import { useMedia } from 'react-use'
 import dayjs from 'dayjs'
 import LocalLoader from '../LocalLoader'
 import utc from 'dayjs/plugin/utc'
-import { Box, Flex, Text } from 'rebass'
-import styled from 'styled-components'
-import Link, { CustomLink } from '../Link'
-import { Divider } from '../../components'
-import DoubleTokenLogo from '../DoubleLogo'
-import { withRouter } from 'react-router-dom'
 import { formattedNum, getPoolLink } from '../../utils'
 import { AutoColumn } from '../Column'
 import { useEthPrice } from '../../contexts/GlobalData'
@@ -256,83 +250,3 @@ function PositionList({ positions }) {
     positions &&
     positions
 
-      .sort((p0, p1) => {
-        if (sortedColumn === SORT_FIELD.PRINCIPAL) {
-          return p0?.principal?.usd > p1?.principal?.usd ? (sortDirection ? -1 : 1) : sortDirection ? 1 : -1
-        }
-        if (sortedColumn === SORT_FIELD.HODL) {
-          return p0?.hodl?.sum > p1?.hodl?.sum ? (sortDirection ? -1 : 1) : sortDirection ? 1 : -1
-        }
-        if (sortedColumn === SORT_FIELD.UNISWAP_RETURN) {
-          return p0?.uniswap?.return > p1?.uniswap?.return ? (sortDirection ? -1 : 1) : sortDirection ? 1 : -1
-        }
-        if (sortedColumn === SORT_FIELD.VALUE) {
-          const bal0 = (p0.liquidityTokenBalance / p0.pair.totalSupply) * p0.pair.reserveUSD
-          const bal1 = (p1.liquidityTokenBalance / p1.pair.totalSupply) * p1.pair.reserveUSD
-          return bal0 > bal1 ? (sortDirection ? -1 : 1) : sortDirection ? 1 : -1
-        }
-        return 1
-      })
-      .slice(ITEMS_PER_PAGE * (page - 1), page * ITEMS_PER_PAGE)
-      .map((position, index) => {
-        return (
-          <div key={index}>
-            <ListItem key={index} index={(page - 1) * 10 + index + 1} position={position} />
-            <Divider />
-          </div>
-        )
-      })
-
-  return (
-    <ListWrapper>
-      <DashGrid center={true} style={{ height: '32px', padding: 0 }}>
-        {!below740 && (
-          <Flex alignItems="flex-start" justifyContent="flexStart">
-            <TYPE.main area="number">#</TYPE.main>
-          </Flex>
-        )}
-        <Flex alignItems="flex-start" justifyContent="flex-start">
-          <TYPE.main area="number">Name</TYPE.main>
-        </Flex>
-        <Flex alignItems="center" justifyContent="flexEnd">
-          <ClickableText
-            area="uniswap"
-            onClick={(e) => {
-              setSortedColumn(SORT_FIELD.VALUE)
-              setSortDirection(sortedColumn !== SORT_FIELD.VALUE ? true : !sortDirection)
-            }}
-          >
-            {below740 ? 'Value' : 'Liquidity'} {sortedColumn === SORT_FIELD.VALUE ? (!sortDirection ? '↑' : '↓') : ''}
-          </ClickableText>
-        </Flex>
-        {!below500 && (
-          <Flex alignItems="center" justifyContent="flexEnd">
-            <ClickableText
-              area="return"
-              onClick={() => {
-                setSortedColumn(SORT_FIELD.UNISWAP_RETURN)
-                setSortDirection(sortedColumn !== SORT_FIELD.UNISWAP_RETURN ? true : !sortDirection)
-              }}
-            >
-              {below740 ? 'Fees' : 'Total Fees Earned'}{' '}
-              {sortedColumn === SORT_FIELD.UNISWAP_RETURN ? (!sortDirection ? '↑' : '↓') : ''}
-            </ClickableText>
-          </Flex>
-        )}
-      </DashGrid>
-      <Divider />
-      <List p={0}>{!positionsSorted ? <LocalLoader /> : positionsSorted}</List>
-      <PageButtons>
-        <div onClick={() => setPage(page === 1 ? page : page - 1)}>
-          <Arrow faded={page === 1 ? true : false}>←</Arrow>
-        </div>
-        <TYPE.body>{'Page ' + page + ' of ' + maxPage}</TYPE.body>
-        <div onClick={() => setPage(page === maxPage ? page : page + 1)}>
-          <Arrow faded={page === maxPage ? true : false}>→</Arrow>
-        </div>
-      </PageButtons>
-    </ListWrapper>
-  )
-}
-
-export default withRouter(PositionList)

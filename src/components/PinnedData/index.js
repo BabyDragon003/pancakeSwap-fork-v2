@@ -3,12 +3,6 @@ import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import { RowBetween, RowFixed } from '../Row'
 import { AutoColumn } from '../Column'
-import { TYPE } from '../../Theme'
-import { useSavedTokens, useSavedPairs } from '../../contexts/LocalStorage'
-import { Hover } from '..'
-import TokenLogo from '../TokenLogo'
-import AccountSearch from '../AccountSearch'
-import { Bookmark, ChevronRight, X } from 'react-feather'
 import { ButtonFaded } from '../ButtonStyled'
 import FormattedName from '../FormattedName'
 
@@ -23,6 +17,32 @@ const RightColumn = styled.div`
   background-color: ${({ theme }) => theme.bg1};
   z-index: 9999;
   overflow: auto;
+  :hover {
+    cursor: pointer;
+  }
+`
+
+const SavedButton = styled(RowBetween)`
+  padding-bottom: ${({ open }) => open && '20px'};
+  border-bottom: ${({ theme, open }) => open && '1px solid' + theme.bg3};
+  margin-bottom: ${({ open }) => open && '1.25rem'};
+
+  :hover {
+    cursor: pointer;
+  }
+`
+
+const ScrollableDiv = styled(AutoColumn)`
+  overflow: auto;
+  padding-bottom: 60px;
+`
+
+const StyledIcon = styled.div`
+  color: ${({ theme }) => theme.text2};
+`
+
+function PinnedData({ history, open, setSavedOpen }) {
+  const [savedPairs, , removePair] = useSavedPairs()
   const [savedTokens, , removeToken] = useSavedTokens()
 
   return !open ? (
