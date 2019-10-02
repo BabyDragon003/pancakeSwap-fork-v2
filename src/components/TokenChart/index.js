@@ -3,16 +3,11 @@ import styled from 'styled-components'
 import { Area, XAxis, YAxis, ResponsiveContainer, Tooltip, AreaChart, BarChart, Bar } from 'recharts'
 import { AutoRow, RowBetween, RowFixed } from '../Row'
 
-import DropdownSelect from '../DropdownSelect'
-import CandleStickChart from '../CandleChart'
-import LocalLoader from '../LocalLoader'
-import { AutoColumn } from '../Column'
-import { Activity } from 'react-feather'
-import { useDarkModeManager } from '../../contexts/LocalStorage'
-
-const ChartWrapper = styled.div`
-  height: 100%;
-  min-height: 300px;
+import { toK, toNiceDate, toNiceDateYear, formattedNum, getTimeframe } from '../../utils'
+import { OptionButton } from '../ButtonStyled'
+import { darken } from 'polished'
+import { useMedia, usePrevious } from 'react-use'
+import { timeframeOptions } from '../../constants'
 
   @media screen and (max-width: 600px) {
     min-height: 200px;

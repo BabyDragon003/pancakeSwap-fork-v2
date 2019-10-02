@@ -8,17 +8,6 @@ import { isAddress } from '../../utils'
 import { useSavedAccounts } from '../../contexts/LocalStorage'
 import { AutoColumn } from '../Column'
 import { TYPE } from '../../Theme'
-import { Hover, StyledIcon } from '..'
-import Panel from '../Panel'
-import { Divider } from '..'
-import { Flex } from 'rebass'
-
-import { X } from 'react-feather'
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: flex-end;
   width: 100%;
   border-radius: 12px;
