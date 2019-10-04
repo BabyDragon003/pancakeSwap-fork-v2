@@ -8,26 +8,16 @@ import { TYPE } from '../../Theme'
 import { StyledIcon } from '..'
 
 const Wrapper = styled.div`
-
-  :hover {
-    cursor: pointer;
-  }
-`
-
-const Dropdown = styled.div`
-  position: absolute;
-  top: 34px;
-  padding-top: 40px;
-  width: calc(100% - 40px);
-  background-color: ${({ theme }) => theme.bg1};
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 10px 10px;
+  z-index: 20;
+  position: relative;
+  background-color: ${({ theme }) => theme.panelColor};
+  border: 1px solid ${({ open, color }) => (open ? color : 'rgba(0, 0, 0, 0.15);')} 
+  width: 100px;
+  padding: 4px 10px;
+  padding-right: 6px;
   border-radius: 8px;
-  width: calc(100% - 20px);
-  font-weight: 500;
-  font-size: 1rem;
-  color: black;
-  :hover {
+  display: flex;
+  align-items: center;
     cursor: pointer;
   }
 `

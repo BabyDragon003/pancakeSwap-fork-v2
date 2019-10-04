@@ -9,25 +9,15 @@ import { Play } from 'react-feather'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import { IconWrapper } from '..'
 
-// constant height for charts
-const HEIGHT = 300
+dayjs.extend(utc)
 
-const TradingViewChart = ({
-  type = CHART_TYPES.BAR,
-  data,
-  base,
-  baseChange,
-  field,
-  title,
-  width,
-  useWeekly = false,
-}) => {
-  // reference for DOM element to create with chart
-  const ref = useRef()
+export const CHART_TYPES = {
+  BAR: 'BAR',
+  AREA: 'AREA',
+}
 
-  // pointer to the chart object
-  const [chartCreated, setChartCreated] = useState(false)
-  const dataPrev = usePrevious(data)
+const Wrapper = styled.div`
+  position: relative;
 
   useEffect(() => {
     if (data !== dataPrev && chartCreated && type === CHART_TYPES.BAR) {
