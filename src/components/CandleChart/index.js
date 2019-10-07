@@ -1,4 +1,3 @@
-import React, { useState, useEffect, useRef } from 'react'
 import { createChart, CrosshairMode } from 'lightweight-charts'
 import dayjs from 'dayjs'
 import { formattedNum } from '../../utils'

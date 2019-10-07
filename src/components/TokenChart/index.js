@@ -1,4 +1,3 @@
-import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { Area, XAxis, YAxis, ResponsiveContainer, Tooltip, AreaChart, BarChart, Bar } from 'recharts'
 import { AutoRow, RowBetween, RowFixed } from '../Row'
@@ -23,6 +22,32 @@ const ChartWrapper = styled.div`
   @media screen and (max-width: 600px) {
     min-height: 200px;
   }
+`
+
+const PriceOption = styled(OptionButton)`
+  border-radius: 2px;
+`
+
+const CHART_VIEW = {
+  VOLUME: 'Volume',
+  LIQUIDITY: 'Liquidity',
+  PRICE: 'Price',
+  LINE_PRICE: 'Price (Line)',
+}
+
+const DATA_FREQUENCY = {
+  DAY: 'DAY',
+  HOUR: 'HOUR',
+  LINE: 'LINE',
+}
+
+const TokenChart = ({ address, color, base }) => {
+  // settings for the window and candle width
+  const [chartFilter, setChartFilter] = useState(CHART_VIEW.PRICE)
+  const [frequency, setFrequency] = useState(DATA_FREQUENCY.HOUR)
+
+  const [darkMode] = useDarkModeManager()
+  const textColor = darkMode ? 'white' : 'black'
 
   // reset view on new address
   const addressPrev = usePrevious(address)
