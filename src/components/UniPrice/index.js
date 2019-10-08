@@ -1,3 +1,4 @@
+import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import Panel from '../Panel'
 import { AutoColumn } from '../Column'
