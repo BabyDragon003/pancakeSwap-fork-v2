@@ -3,16 +3,11 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { default as ReactSelect } from 'react-select'
 import { isMobile } from 'react-device-detect'
-  display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: flex-start;
-  flex-direction: row;
-`
 
-const LabelBox = styled.div``
+import Popout from './popout'
 
-const LogoBox = styled.div`
+import { customStyles, customStylesMobile, customStylesTime } from './styles'
+
   width: 30px;
   display: flex;
   justify-content: center;
