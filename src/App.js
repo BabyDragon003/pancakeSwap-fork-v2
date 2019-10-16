@@ -8,21 +8,36 @@ import TokenPage from './pages/TokenPage'
 import PairPage from './pages/PairPage'
 import { useGlobalData, useGlobalChartData } from './contexts/GlobalData'
 import { isAddress } from './utils'
-import AccountPage from './pages/AccountPage'
-import AllTokensPage from './pages/AllTokensPage'
-import AllPairsPage from './pages/AllPairsPage'
-import PinnedData from './components/PinnedData'
-
-import SideNav from './components/SideNav'
-import AccountLookup from './pages/AccountLookup'
-import LocalLoader from './components/LocalLoader'
-import { useLatestBlocks } from './contexts/Application'
-import GoogleAnalyticsReporter from './components/analytics/GoogleAnalyticsReporter'
-import { PAIR_BLACKLIST, TOKEN_BLACKLIST } from './constants'
 
 const AppWrapper = styled.div`
   position: relative;
   width: 100%;
+`
+const ContentWrapper = styled.div`
+  display: grid;
+  grid-template-columns: ${({ open }) => (open ? '220px 1fr 200px' : '220px 1fr 64px')};
+
+  @media screen and (max-width: 1400px) {
+    grid-template-columns: 220px 1fr;
+  }
+
+  @media screen and (max-width: 1080px) {
+    grid-template-columns: 1fr;
+    max-width: 100vw;
+    overflow: hidden;
+    grid-gap: 0;
+  }
+`
+
+const Right = styled.div`
+  position: fixed;
+  right: 0;
+  bottom: 0rem;
+  z-index: 99;
+  width: ${({ open }) => (open ? '220px' : '64px')};
+  height: ${({ open }) => (open ? 'fit-content' : '64px')};
+  overflow: auto;
+  background-color: ${({ theme }) => theme.bg1};
   @media screen and (max-width: 1400px) {
     display: none;
   }

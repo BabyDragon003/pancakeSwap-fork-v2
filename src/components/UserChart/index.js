@@ -8,21 +8,36 @@ import { darken } from 'polished'
 import { useMedia } from 'react-use'
 import { timeframeOptions } from '../../constants'
 import DropdownSelect from '../DropdownSelect'
-import { useUserLiquidityChart } from '../../contexts/User'
-import LocalLoader from '../LocalLoader'
-import { useDarkModeManager } from '../../contexts/LocalStorage'
-import { TYPE } from '../../Theme'
-
-const ChartWrapper = styled.div`
-  height: 100%;
-  max-height: 390px;
-
-  @media screen and (max-width: 600px) {
-    min-height: 200px;
   }
 `
 
 const UserChart = ({ account }) => {
+  const chartData = useUserLiquidityChart(account)
+
+  const [timeWindow, setTimeWindow] = useState(timeframeOptions.ALL_TIME)
+  let utcStartTime = getTimeframe(timeWindow)
+
+  const below600 = useMedia('(max-width: 600px)')
+  const above1600 = useMedia('(min-width: 1600px)')
+
+  const domain = [(dataMin) => (dataMin > utcStartTime ? dataMin : utcStartTime), 'dataMax']
+
+  const aspect = above1600 ? 60 / 12 : below600 ? 60 / 42 : 60 / 16
+
+  const [darkMode] = useDarkModeManager()
+  const textColor = darkMode ? 'white' : 'black'
+
+  return (
+    <ChartWrapper>
+      {below600 ? (
+        <RowBetween mb={40}>
+          <div />
+          <DropdownSelect options={timeframeOptions} active={timeWindow} setActive={setTimeWindow} color={'#ff007a'} />
+        </RowBetween>
+      ) : (
+        <RowBetween mb={40}>
+          <AutoRow gap="10px">
+            <TYPE.main>Liquidity Value</TYPE.main>
           </AutoRow>
           <AutoRow justify="flex-end" gap="4px">
             <OptionButton
