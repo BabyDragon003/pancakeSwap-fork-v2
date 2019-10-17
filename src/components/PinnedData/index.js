@@ -8,16 +8,11 @@ import { useSavedTokens, useSavedPairs } from '../../contexts/LocalStorage'
 import { Hover } from '..'
 import TokenLogo from '../TokenLogo'
 import AccountSearch from '../AccountSearch'
-  border-left: ${({ theme, open }) => '1px solid' + theme.bg3};
-  background-color: ${({ theme }) => theme.bg1};
-  z-index: 9999;
-  overflow: auto;
-  :hover {
-    cursor: pointer;
-  }
-`
+import { Bookmark, ChevronRight, X } from 'react-feather'
+import { ButtonFaded } from '../ButtonStyled'
+import FormattedName from '../FormattedName'
 
-const SavedButton = styled(RowBetween)`
+const RightColumn = styled.div`
   padding-bottom: ${({ open }) => open && '20px'};
   border-bottom: ${({ theme, open }) => open && '1px solid' + theme.bg3};
   margin-bottom: ${({ open }) => open && '1.25rem'};

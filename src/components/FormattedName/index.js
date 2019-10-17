@@ -8,16 +8,11 @@ const TextWrapper = styled.div`
   color: ${({ theme, link }) => (link ? theme.blue : theme.text1)};
   font-size: ${({ fontSize }) => fontSize ?? 'inherit'};
 
-
-  if (!text) {
-    return ''
+  :hover {
+    cursor: pointer;
   }
 
-  if (text.length > maxCharacters) {
-    return (
-      <Tooltip text={text} show={showHover}>
-        <TextWrapper
-          onMouseEnter={() => setShowHover(true)}
+  @media screen and (max-width: 600px) {
           onMouseLeave={() => setShowHover(false)}
           margin={margin}
           adjustSize={adjustSize}
