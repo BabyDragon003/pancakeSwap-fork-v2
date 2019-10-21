@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import 'feather-icons'
 
 import { TYPE } from '../Theme'
