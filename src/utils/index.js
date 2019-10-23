@@ -3,6 +3,12 @@ import { BigNumber } from 'bignumber.js'
 import dayjs from 'dayjs'
 import { ethers } from 'ethers'
 import utc from 'dayjs/plugin/utc'
+import { client, blockClient } from '../apollo/client'
+import { GET_BLOCK, GET_BLOCKS, SHARE_VALUE } from '../apollo/queries'
+import { Text } from 'rebass'
+import _Decimal from 'decimal.js-light'
+import toFormat from 'toformat'
+import { timeframeOptions } from '../constants'
 import Numeral from 'numeral'
 
 // format libraries
