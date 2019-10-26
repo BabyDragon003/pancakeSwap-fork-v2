@@ -18,16 +18,11 @@ const RightColumn = styled.div`
   top: 0px;
   height: 100vh;
   width: ${({ open }) => (open ? '160px' : '23px')};
+  padding: 1.25rem;
+  border-left: ${({ theme, open }) => '1px solid' + theme.bg3};
+  background-color: ${({ theme }) => theme.bg1};
+  z-index: 9999;
   overflow: auto;
-  padding-bottom: 60px;
-`
-
-const StyledIcon = styled.div`
-  color: ${({ theme }) => theme.text2};
-`
-
-function PinnedData({ history, open, setSavedOpen }) {
-  const [savedPairs, , removePair] = useSavedPairs()
   const [savedTokens, , removeToken] = useSavedTokens()
 
   return !open ? (
