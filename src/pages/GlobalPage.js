@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Box } from 'rebass'
 import styled from 'styled-components'
