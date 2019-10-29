@@ -1,13 +1,8 @@
+import React, { createContext, useContext, useReducer, useMemo, useCallback, useEffect, useState } from 'react'
 import { useAllPairData, usePairData } from './PairData'
 import { client, stakingClient } from '../apollo/client'
 import {
   USER_TRANSACTIONS,
-  USER_POSITIONS,
-  USER_HISTORY,
-  PAIR_DAY_DATA_BULK,
-  MINING_POSITIONS,
-} from '../apollo/queries'
-import { useTimeframe, useStartTimestamp } from './Application'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { useEthPrice } from './GlobalData'
