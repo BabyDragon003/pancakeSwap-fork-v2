@@ -8,6 +8,17 @@ import { transparentize } from 'polished'
 import { TYPE } from '../../Theme'
 import { withRouter } from 'react-router-dom'
 import { TrendingUp, List, PieChart, Disc } from 'react-feather'
+import Link from '../Link'
+import { useSessionStart } from '../../contexts/Application'
+import { useDarkModeManager } from '../../contexts/LocalStorage'
+import Toggle from '../Toggle'
+
+const Wrapper = styled.div`
+  height: ${({ isMobile }) => (isMobile ? 'initial' : '100vh')};
+  background-color: ${({ theme }) => transparentize(0.4, theme.bg1)};
+  color: ${({ theme }) => theme.text1};
+  padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+  position: sticky;
   top: 0px;
   z-index: 9999;
   box-sizing: border-box;
