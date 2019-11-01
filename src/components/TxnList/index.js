@@ -13,6 +13,22 @@ import { Box, Flex, Text } from 'rebass'
 import Link from '../Link'
 import { Divider, EmptyCard } from '..'
 import DropdownSelect from '../DropdownSelect'
+import FormattedName from '../FormattedName'
+import { TYPE } from '../../Theme'
+import { updateNameData } from '../../utils/data'
+
+dayjs.extend(utc)
+
+const PageButtons = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+`
+
+const Arrow = styled.div`
+  color: #2f80ed;
   opacity: ${(props) => (props.faded ? 0.3 : 1)};
   padding: 0 20px;
   user-select: none;
@@ -273,3 +289,173 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
         </DataText>
         <DataText area="value">
           {currency === 'ETH' ? 'Ξ ' + formattedNum(item.valueETH) : formattedNum(item.amountUSD, true)}
+        </DataText>
+        {!below780 && (
+          <>
+            <DataText area="amountOther">
+              {formattedNum(item.token1Amount) + ' '}{' '}
+              <FormattedName text={item.token1Symbol} maxCharacters={5} margin={true} />
+            </DataText>
+            <DataText area="amountToken">
+              {formattedNum(item.token0Amount) + ' '}{' '}
+              <FormattedName text={item.token0Symbol} maxCharacters={5} margin={true} />
+            </DataText>
+          </>
+        )}
+        {!below1080 && (
+          <DataText area="account">
+            <Link color={color} external href={'https://etherscan.io/address/' + item.account}>
+              {item.account && item.account.slice(0, 6) + '...' + item.account.slice(38, 42)}
+            </Link>
+          </DataText>
+        )}
+        <DataText area="time">{formatTime(item.timestamp)}</DataText>
+      </DashGrid>
+    )
+  }
+
+  return (
+    <>
+      <DashGrid center={true} style={{ height: 'fit-content', padding: '0 0 1rem 0' }}>
+        {below780 ? (
+          <RowBetween area="txn">
+            <DropdownSelect options={TXN_TYPE} active={txFilter} setActive={setTxFilter} color={color} />
+          </RowBetween>
+        ) : (
+          <RowFixed area="txn" gap="10px" pl={4}>
+            <SortText
+              onClick={() => {
+                setTxFilter(TXN_TYPE.ALL)
+              }}
+              active={txFilter === TXN_TYPE.ALL}
+            >
+              All
+            </SortText>
+            <SortText
+              onClick={() => {
+                setTxFilter(TXN_TYPE.SWAP)
+              }}
+              active={txFilter === TXN_TYPE.SWAP}
+            >
+              Swaps
+            </SortText>
+            <SortText
+              onClick={() => {
+                setTxFilter(TXN_TYPE.ADD)
+              }}
+              active={txFilter === TXN_TYPE.ADD}
+            >
+              Adds
+            </SortText>
+            <SortText
+              onClick={() => {
+                setTxFilter(TXN_TYPE.REMOVE)
+              }}
+              active={txFilter === TXN_TYPE.REMOVE}
+            >
+              Removes
+            </SortText>
+          </RowFixed>
+        )}
+
+        <Flex alignItems="center" justifyContent="flexStart">
+          <ClickableText
+            color="textDim"
+            area="value"
+            onClick={(e) => {
+              setSortedColumn(SORT_FIELD.VALUE)
+              setSortDirection(sortedColumn !== SORT_FIELD.VALUE ? true : !sortDirection)
+            }}
+          >
+            Total Value {sortedColumn === SORT_FIELD.VALUE ? (!sortDirection ? '↑' : '↓') : ''}
+          </ClickableText>
+        </Flex>
+        {!below780 && (
+          <Flex alignItems="center">
+            <ClickableText
+              area="amountToken"
+              color="textDim"
+              onClick={() => {
+                setSortedColumn(SORT_FIELD.AMOUNT0)
+                setSortDirection(sortedColumn !== SORT_FIELD.AMOUNT0 ? true : !sortDirection)
+              }}
+            >
+              {symbol0Override ? symbol0Override + ' Amount' : 'Token Amount'}{' '}
+              {sortedColumn === SORT_FIELD.AMOUNT0 ? (sortDirection ? '↑' : '↓') : ''}
+            </ClickableText>
+          </Flex>
+        )}
+        <>
+          {!below780 && (
+            <Flex alignItems="center">
+              <ClickableText
+                area="amountOther"
+                color="textDim"
+                onClick={() => {
+                  setSortedColumn(SORT_FIELD.AMOUNT1)
+                  setSortDirection(sortedColumn !== SORT_FIELD.AMOUNT1 ? true : !sortDirection)
+                }}
+              >
+                {symbol1Override ? symbol1Override + ' Amount' : 'Token Amount'}{' '}
+                {sortedColumn === SORT_FIELD.AMOUNT1 ? (sortDirection ? '↑' : '↓') : ''}
+              </ClickableText>
+            </Flex>
+          )}
+          {!below1080 && (
+            <Flex alignItems="center">
+              <TYPE.body area="account">Account</TYPE.body>
+            </Flex>
+          )}
+          <Flex alignItems="center">
+            <ClickableText
+              area="time"
+              color="textDim"
+              onClick={() => {
+                setSortedColumn(SORT_FIELD.TIMESTAMP)
+                setSortDirection(sortedColumn !== SORT_FIELD.TIMESTAMP ? true : !sortDirection)
+              }}
+            >
+              Time {sortedColumn === SORT_FIELD.TIMESTAMP ? (!sortDirection ? '↑' : '↓') : ''}
+            </ClickableText>
+          </Flex>
+        </>
+      </DashGrid>
+      <Divider />
+      <List p={0}>
+        {!filteredList ? (
+          <LocalLoader />
+        ) : filteredList.length === 0 ? (
+          <EmptyCard>No recent transactions found.</EmptyCard>
+        ) : (
+          filteredList.map((item, index) => {
+            return (
+              <div key={index}>
+                <ListItem key={index} index={index + 1} item={item} />
+                <Divider />
+              </div>
+            )
+          })
+        )}
+      </List>
+      <PageButtons>
+        <div
+          onClick={(e) => {
+            setPage(page === 1 ? page : page - 1)
+          }}
+        >
+          <Arrow faded={page === 1 ? true : false}>←</Arrow>
+        </div>
+        <TYPE.body>{'Page ' + page + ' of ' + maxPage}</TYPE.body>
+        <div
+          onClick={(e) => {
+            setPage(page === maxPage ? page : page + 1)
+          }}
+        >
+          <Arrow faded={page === maxPage ? true : false}>→</Arrow>
+        </div>
+      </PageButtons>
+    </>
+  )
+}
+
+export default TxnList
