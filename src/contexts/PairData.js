@@ -1,13 +1,8 @@
+import React, { createContext, useContext, useReducer, useMemo, useCallback, useEffect, useState } from 'react'
 
 import { client } from '../apollo/client'
 import {
   PAIR_DATA,
-  PAIR_CHART,
-  FILTERED_TRANSACTIONS,
-  PAIRS_CURRENT,
-  PAIRS_BULK,
-  PAIRS_HISTORICAL_BULK,
-  HOURLY_PAIR_RATES,
 } from '../apollo/queries'
 
 import { useEthPrice } from './GlobalData'
