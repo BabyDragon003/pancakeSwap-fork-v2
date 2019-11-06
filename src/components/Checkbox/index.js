@@ -9,17 +9,6 @@ const StyleCheckbox = styled.input`
   :before {
     background: #f35429;
   }
-
-  :hover {
-    cursor: pointer;
-  }
-`
-
-const ButtonText = styled(TYPE.main)`
-  cursor: pointer;
-  :hover {
-    opacity: 0.6;
-  }
 `
 
 const CheckBox = ({ checked, setChecked, text }) => {

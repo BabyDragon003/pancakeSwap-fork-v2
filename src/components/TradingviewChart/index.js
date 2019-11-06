@@ -9,17 +9,6 @@ import { Play } from 'react-feather'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import { IconWrapper } from '..'
 
-dayjs.extend(utc)
-
-export const CHART_TYPES = {
-  BAR: 'BAR',
-  AREA: 'AREA',
-}
-
-const Wrapper = styled.div`
-  position: relative;
-`
-
 // constant height for charts
 const HEIGHT = 300
 
