@@ -18,27 +18,6 @@ const Medium = styled.span`
   font-weight: 500;
 `
 
-export default function GlobalStats() {
-  const below1295 = useMedia('(max-width: 1295px)')
-  const below1180 = useMedia('(max-width: 1180px)')
-  const below1024 = useMedia('(max-width: 1024px)')
-  const below400 = useMedia('(max-width: 400px)')
-  const below816 = useMedia('(max-width: 816px)')
-
-  const [showPriceCard, setShowPriceCard] = useState(false)
-
-  const { oneDayVolumeUSD, oneDayTxns, pairCount } = useGlobalData()
-  const [ethPrice] = useEthPrice()
-  const formattedEthPrice = ethPrice ? formattedNum(ethPrice, true) : '-'
-  const oneDayFees = oneDayVolumeUSD ? formattedNum(oneDayVolumeUSD * 0.003, true) : ''
-
-  return (
-    <Header>
-      <RowBetween style={{ padding: below816 ? '0.5rem' : '.5rem' }}>
-        <RowFixed>
-          {!below400 && (
-            <TYPE.main
-              mr={'1rem'}
               onMouseEnter={() => {
                 setShowPriceCard(true)
               }}
