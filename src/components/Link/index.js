@@ -3,12 +3,6 @@ import { Link as RebassLink } from 'rebass'
 import { Link as RouterLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { lighten, darken } from 'polished'
-
-const WrappedLink = ({ external, children, ...rest }) => (
-  <RebassLink
-    target={external ? '_blank' : null}
-    rel={external ? 'noopener noreferrer' : null}
     color="#2f80ed"
     {...rest}
   >
