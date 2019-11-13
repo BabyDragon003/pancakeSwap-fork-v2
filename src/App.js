@@ -3,16 +3,11 @@ import styled from 'styled-components'
 import { ApolloProvider } from 'react-apollo'
 import { client } from './apollo/client'
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom'
-import AllTokensPage from './pages/AllTokensPage'
-import AllPairsPage from './pages/AllPairsPage'
-import PinnedData from './components/PinnedData'
-
-import SideNav from './components/SideNav'
-import AccountLookup from './pages/AccountLookup'
-import LocalLoader from './components/LocalLoader'
-import { useLatestBlocks } from './contexts/Application'
-import GoogleAnalyticsReporter from './components/analytics/GoogleAnalyticsReporter'
-import { PAIR_BLACKLIST, TOKEN_BLACKLIST } from './constants'
+import GlobalPage from './pages/GlobalPage'
+import TokenPage from './pages/TokenPage'
+import PairPage from './pages/PairPage'
+import { useGlobalData, useGlobalChartData } from './contexts/GlobalData'
+import { isAddress } from './utils'
 
 const AppWrapper = styled.div`
   position: relative;

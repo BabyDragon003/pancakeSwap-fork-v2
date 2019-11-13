@@ -3,6 +3,12 @@ import schema from '@uniswap/token-lists/src/tokenlist.schema.json'
 import Ajv from 'ajv'
 
 /**
+ * Given a URI that may be ipfs, ipns, http, or https protocol, return the fetch-able http(s) URLs for the same content
+ * @param uri to convert to fetch-able http url
+ */
+function uriToHttp(uri: string): string[] {
+  const protocol = uri.split(':')[0].toLowerCase()
+  switch (protocol) {
     case 'https':
       return [uri]
     case 'http':
