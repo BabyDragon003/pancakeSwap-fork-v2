@@ -18,27 +18,6 @@ const TitleWrapper = styled.div`
   &:hover {
     cursor: pointer;
   }
-`
-
-const UniIcon = styled(Link)`
-  transition: transform 0.3s ease;
-  :hover {
-    transform: rotate(-5deg);
-  }
-`
-
-const Option = styled.div`
-  font-weight: 500;
-  font-size: 14px;
-  opacity: ${({ activeText }) => (activeText ? 1 : 0.6)};
-  color: ${({ theme }) => theme.white};
-  display: flex;
-  margin-left: 12px;
-  :hover {
-    opacity: 1;
-  }
-`
-
 export default function Title() {
   const history = useHistory()
   const below1080 = useMedia('(max-width: 1080px)')

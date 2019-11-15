@@ -13,16 +13,11 @@ import { ButtonFaded } from '../ButtonStyled'
 import FormattedName from '../FormattedName'
 
 const RightColumn = styled.div`
-  padding-bottom: ${({ open }) => open && '20px'};
-  border-bottom: ${({ theme, open }) => open && '1px solid' + theme.bg3};
-  margin-bottom: ${({ open }) => open && '1.25rem'};
-
-  :hover {
-    cursor: pointer;
-  }
-`
-
-const ScrollableDiv = styled(AutoColumn)`
+  position: fixed;
+  right: 0;
+  top: 0px;
+  height: 100vh;
+  width: ${({ open }) => (open ? '160px' : '23px')};
   overflow: auto;
   padding-bottom: 60px;
 `
