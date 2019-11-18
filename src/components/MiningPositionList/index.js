@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react'
 import { useMedia } from 'react-use'
 import dayjs from 'dayjs'
 import LocalLoader from '../LocalLoader'
@@ -18,6 +17,27 @@ import FormattedName from '../FormattedName'
 
 dayjs.extend(utc)
 
+const PageButtons = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+`
+
+const Arrow = styled.div`
+  color: ${({ theme }) => theme.primary1};
+  opacity: ${(props) => (props.faded ? 0.3 : 1)};
+  padding: 0 20px;
+  user-select: none;
+  :hover {
+    cursor: pointer;
+  }
+`
+
+const List = styled(Box)`
+  -webkit-overflow-scrolling: touch;
+`
 
 const DashGrid = styled.div`
   display: grid;

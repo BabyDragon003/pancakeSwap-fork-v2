@@ -1,4 +1,3 @@
-import React from 'react'
 import { ThemeProvider as StyledComponentsThemeProvider, createGlobalStyle } from 'styled-components'
 import { useDarkModeManager } from '../contexts/LocalStorage'
 import styled from 'styled-components'

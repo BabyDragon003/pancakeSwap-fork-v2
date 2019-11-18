@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import styled from 'styled-components'
 import { ApolloProvider } from 'react-apollo'
 import { client } from './apollo/client'

@@ -1,4 +1,3 @@
-import React from 'react'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import { RowBetween, RowFixed } from '../Row'
@@ -18,6 +17,27 @@ const RightColumn = styled.div`
   top: 0px;
   height: 100vh;
   width: ${({ open }) => (open ? '160px' : '23px')};
+  padding: 1.25rem;
+  border-left: ${({ theme, open }) => '1px solid' + theme.bg3};
+  background-color: ${({ theme }) => theme.bg1};
+  z-index: 9999;
+  overflow: auto;
+  :hover {
+    cursor: pointer;
+  }
+`
+
+const SavedButton = styled(RowBetween)`
+  padding-bottom: ${({ open }) => open && '20px'};
+  border-bottom: ${({ theme, open }) => open && '1px solid' + theme.bg3};
+  margin-bottom: ${({ open }) => open && '1.25rem'};
+
+  :hover {
+    cursor: pointer;
+  }
+`
+
+const ScrollableDiv = styled(AutoColumn)`
   overflow: auto;
   padding-bottom: 60px;
 `

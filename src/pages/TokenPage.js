@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import 'feather-icons'
 import { withRouter } from 'react-router-dom'
 import { Text } from 'rebass'
@@ -18,6 +17,27 @@ import Search from '../components/Search'
 import { formattedNum, formattedPercent, getPoolLink, getSwapLink, localNumber } from '../utils'
 import { useTokenData, useTokenTransactions, useTokenPairs } from '../contexts/TokenData'
 import { TYPE, ThemedBackground } from '../Theme'
+import { transparentize } from 'polished'
+import { useColor } from '../hooks'
+import CopyHelper from '../components/Copy'
+import { useMedia } from 'react-use'
+import { useDataForList } from '../contexts/PairData'
+import { useEffect } from 'react'
+import Warning from '../components/Warning'
+import { usePathDismissed, useSavedTokens } from '../contexts/LocalStorage'
+import { Hover, PageWrapper, ContentWrapper, StyledIcon, BlockedWrapper, BlockedMessageWrapper } from '../components'
+import { PlusCircle, Bookmark, AlertCircle } from 'react-feather'
+import FormattedName from '../components/FormattedName'
+import { useListedTokens } from '../contexts/Application'
+import HoverText from '../components/HoverText'
+import { UNTRACKED_COPY, TOKEN_BLACKLIST, BLOCKED_WARNINGS } from '../constants'
+import QuestionHelper from '../components/QuestionHelper'
+import Checkbox from '../components/Checkbox'
+import { shortenAddress } from '../utils'
+
+const DashboardWrapper = styled.div`
+  width: 100%;
+`
 
 const PanelWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);

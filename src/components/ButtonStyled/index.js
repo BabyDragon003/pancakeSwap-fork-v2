@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button as RebassButton } from 'rebass/styled-components'
 import styled from 'styled-components'
 import { Plus, ChevronDown, ChevronUp } from 'react-feather'

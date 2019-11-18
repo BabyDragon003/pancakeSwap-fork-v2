@@ -1,4 +1,3 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react'
 import styled from 'styled-components'
 
 import Row, { RowFixed } from '../Row'
@@ -18,6 +17,27 @@ import { client } from '../../apollo/client'
 import { PAIR_SEARCH, TOKEN_SEARCH } from '../../apollo/queries'
 import FormattedName from '../FormattedName'
 import { TYPE } from '../../Theme'
+import { updateNameData } from '../../utils/data'
+
+const Container = styled.div`
+  height: 48px;
+  z-index: 30;
+  position: relative;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+`
+
+const Wrapper = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: ${({ theme, small, open }) => (small ? (open ? theme.bg6 : 'none') : transparentize(0.4, theme.bg6))};
   border-bottom-right-radius: ${({ open }) => (open ? '0px' : '12px')};
   border-bottom-left-radius: ${({ open }) => (open ? '0px' : '12px')};
   z-index: 9999;

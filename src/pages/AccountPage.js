@@ -1,4 +1,3 @@
-import React, { useState, useMemo, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
 import { useUserTransactions, useUserPositions, useMiningPositions } from '../contexts/User'
 import TxnList from '../components/TxnList'
@@ -18,6 +17,27 @@ import { Bookmark, Activity } from 'react-feather'
 import Link from '../components/Link'
 import { FEE_WARNING_TOKENS } from '../constants'
 import { BasicLink } from '../components/Link'
+import { useMedia } from 'react-use'
+import Search from '../components/Search'
+import { useSavedAccounts } from '../contexts/LocalStorage'
+
+const AccountWrapper = styled.div`
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 6px 16px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const Header = styled.div``
+
+const DashboardWrapper = styled.div`
+  width: 100%;
+`
+
+const DropdownWrapper = styled.div`
+  position: relative;
   margin-bottom: 1rem;
   border: 1px solid #edeef2;
   border-radius: 12px;

@@ -1,4 +1,3 @@
-import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { Area, XAxis, YAxis, ResponsiveContainer, Tooltip, AreaChart, BarChart, Bar } from 'recharts'
 import { AutoRow, RowBetween, RowFixed } from '../Row'

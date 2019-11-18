@@ -1,4 +1,3 @@
-import { TokenList } from '@uniswap/token-lists'
 import schema from '@uniswap/token-lists/src/tokenlist.schema.json'
 import Ajv from 'ajv'
 
@@ -18,6 +17,27 @@ function uriToHttp(uri: string): string[] {
       return [`https://cloudflare-ipfs.com/ipfs/${hash}/`, `https://ipfs.io/ipfs/${hash}/`]
     case 'ipns':
       const name = uri.match(/^ipns:(\/\/)?(.*)$/i)?.[2]
+      return [`https://cloudflare-ipfs.com/ipns/${name}/`, `https://ipfs.io/ipns/${name}/`]
+    default:
+      return []
+  }
+}
+
+const tokenListValidator = new Ajv({ allErrors: true }).compile(schema)
+
+/**
+ * Contains the logic for resolving a list URL to a validated token list
+ * @param listUrl list url
+ */
+export default async function getTokenList(listUrl: string): Promise<TokenList> {
+  const urls = uriToHttp(listUrl)
+  for (let i = 0; i < urls.length; i++) {
+    const url = urls[i]
+    const isLast = i === urls.length - 1
+    let response
+    try {
+      response = await fetch(url)
+    } catch (error) {
       console.debug('Failed to fetch list', listUrl, error)
 
       continue
