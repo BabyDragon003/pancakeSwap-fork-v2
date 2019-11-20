@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { XAxis, YAxis, ResponsiveContainer, Tooltip, LineChart, Line, CartesianGrid } from 'recharts'
 import { AutoRow, RowBetween } from '../Row'

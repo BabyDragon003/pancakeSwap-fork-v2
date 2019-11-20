@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react'
 import { useMedia } from 'react-use'
 import dayjs from 'dayjs'
 import LocalLoader from '../LocalLoader'
@@ -7,17 +8,6 @@ import styled from 'styled-components'
 
 import { CustomLink } from '../Link'
 import { Divider } from '../../components'
-import { withRouter } from 'react-router-dom'
-import { formattedNum, formattedPercent } from '../../utils'
-import DoubleTokenLogo from '../DoubleLogo'
-import FormattedName from '../FormattedName'
-import QuestionHelper from '../QuestionHelper'
-import { TYPE } from '../../Theme'
-import { PAIR_BLACKLIST } from '../../constants'
-import { AutoColumn } from '../Column'
-
-dayjs.extend(utc)
-
 const PageButtons = styled.div`
   width: 100%;
   display: flex;
