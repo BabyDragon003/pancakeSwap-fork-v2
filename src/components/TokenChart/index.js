@@ -8,16 +8,11 @@ import { OptionButton } from '../ButtonStyled'
 import { darken } from 'polished'
 import { useMedia, usePrevious } from 'react-use'
 import { timeframeOptions } from '../../constants'
-
-  @media screen and (max-width: 600px) {
-    min-height: 200px;
-  }
-`
-
-const PriceOption = styled(OptionButton)`
-  border-radius: 2px;
-`
-
+import { useTokenChartData, useTokenPriceData } from '../../contexts/TokenData'
+import DropdownSelect from '../DropdownSelect'
+import CandleStickChart from '../CandleChart'
+import LocalLoader from '../LocalLoader'
+import { AutoColumn } from '../Column'
 const CHART_VIEW = {
   VOLUME: 'Volume',
   LIQUIDITY: 'Liquidity',

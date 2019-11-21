@@ -8,6 +8,17 @@ export const priceOverrides = [
   '0x6b175474e89094c44da98b954eedeac495271d0f', // DAI
 ]
 
+interface ReturnMetrics {
+  hodleReturn: number // difference in asset values t0 -> t1 with t0 deposit amounts
+  netReturn: number // net return from t0 -> t1
+  uniswapReturn: number // netReturn - hodlReturn
+  impLoss: number
+  fees: number
+}
+
+// used to calculate returns within a given window bounded by two positions
+interface Position {
+  pair: any
   liquidityTokenBalance: number
   liquidityTokenTotalSupply: number
   reserve0: number
