@@ -1,4 +1,3 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react'
 import { ResponsiveContainer } from 'recharts'
 import { timeframeOptions } from '../../constants'
 import { useGlobalChartData, useGlobalData } from '../../contexts/GlobalData'
