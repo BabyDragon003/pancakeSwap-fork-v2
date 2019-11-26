@@ -1,13 +1,8 @@
+import React from 'react'
 import styled from 'styled-components'
 import { Text, Box } from 'rebass'
 
 import Link from './Link'
-
-import { urls } from '../utils'
-
-const Divider = styled(Box)`
-  height: 1px;
-  background-color: ${({ theme }) => theme.divider};
 `
 
 export const BlockedWrapper = styled.div`

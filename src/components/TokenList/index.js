@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
@@ -273,3 +274,48 @@ function TopTokenList({ tokens, itemMax = 10, useTracked = false }) {
                 setSortDirection(sortedColumn !== SORT_FIELD.PRICE ? true : !sortDirection)
               }}
             >
+              Price {sortedColumn === SORT_FIELD.PRICE ? (!sortDirection ? '↑' : '↓') : ''}
+            </ClickableText>
+          </Flex>
+        )}
+        {!below1080 && (
+          <Flex alignItems="center">
+            <ClickableText
+              area="change"
+              onClick={(e) => {
+                setSortedColumn(SORT_FIELD.CHANGE)
+                setSortDirection(sortedColumn !== SORT_FIELD.CHANGE ? true : !sortDirection)
+              }}
+            >
+              Price Change (24hrs)
+              {sortedColumn === SORT_FIELD.CHANGE ? (!sortDirection ? '↑' : '↓') : ''}
+            </ClickableText>
+          </Flex>
+        )}
+      </DashGrid>
+      <Divider />
+      <List p={0}>
+        {filteredList &&
+          filteredList.map((item, index) => {
+            return (
+              <div key={index}>
+                <ListItem key={index} index={(page - 1) * itemMax + index + 1} item={item} />
+                <Divider />
+              </div>
+            )
+          })}
+      </List>
+      <PageButtons>
+        <div onClick={() => setPage(page === 1 ? page : page - 1)}>
+          <Arrow faded={page === 1 ? true : false}>←</Arrow>
+        </div>
+        <TYPE.body>{'Page ' + page + ' of ' + maxPage}</TYPE.body>
+        <div onClick={() => setPage(page === maxPage ? page : page + 1)}>
+          <Arrow faded={page === maxPage ? true : false}>→</Arrow>
+        </div>
+      </PageButtons>
+    </ListWrapper>
+  )
+}
+
+export default withRouter(TopTokenList)

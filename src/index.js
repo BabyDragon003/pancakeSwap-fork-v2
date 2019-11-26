@@ -1,3 +1,4 @@
+import React from 'react'
 import ReactDOM from 'react-dom'
 import ReactGA from 'react-ga'
 import { isMobile } from 'react-device-detect'
