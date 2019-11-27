@@ -3,16 +3,11 @@ import styled from 'styled-components'
 
 import { useCurrentCurrency } from '../../contexts/Application'
 
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+import Row from '../Row'
+import { ChevronDown as Arrow } from 'react-feather'
 
-  width: fit-content;
-  height: 38px;
-  border-radius: 20px;
-  font-weight: 500;
-  font-size: 1rem;
-  color: ${({ theme }) => theme.textColor};
+const Select = styled.div`
+  position: relative;
 
   :hover {
     cursor: pointer;

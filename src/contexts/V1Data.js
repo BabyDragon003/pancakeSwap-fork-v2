@@ -8,17 +8,6 @@ import weekOfYear from 'dayjs/plugin/weekOfYear'
 dayjs.extend(utc)
 dayjs.extend(weekOfYear)
 
-export async function getV1Data() {
-  dayjs.extend(utc)
-
-  const utcCurrentTime = dayjs()
-  const utcOneDayBack = utcCurrentTime.subtract(1, 'day').unix()
-  const utcTwoDaysBack = utcCurrentTime.subtract(2, 'day').unix()
-
-  try {
-    // get the current data
-    let result = await v1Client.query({
-      query: V1_DATA_QUERY,
       variables: {
         date: utcOneDayBack,
         date2: utcTwoDaysBack,

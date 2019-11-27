@@ -3,6 +3,12 @@ import { client } from '../apollo/client'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { useTimeframe } from './Application'
+import {
+  getPercentChange,
+  getBlockFromTimestamp,
+  getBlocksFromTimestamps,
+  get2DayPercentChange,
+  getTimeframe,
 } from '../utils'
 import {
   GLOBAL_DATA,
