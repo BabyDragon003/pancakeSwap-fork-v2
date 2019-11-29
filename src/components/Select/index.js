@@ -8,6 +8,17 @@ import Popout from './popout'
 
 import { customStyles, customStylesMobile, customStylesTime } from './styles'
 
+const MenuLabel = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-start;
+  flex-direction: row;
+`
+
+const LabelBox = styled.div``
+
+const LogoBox = styled.div`
   width: 30px;
   display: flex;
   justify-content: center;
