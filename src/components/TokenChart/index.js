@@ -13,16 +13,26 @@ import DropdownSelect from '../DropdownSelect'
 import CandleStickChart from '../CandleChart'
 import LocalLoader from '../LocalLoader'
 import { AutoColumn } from '../Column'
-import { Activity } from 'react-feather'
-import { useDarkModeManager } from '../../contexts/LocalStorage'
+const CHART_VIEW = {
+  VOLUME: 'Volume',
+  LIQUIDITY: 'Liquidity',
+  PRICE: 'Price',
+  LINE_PRICE: 'Price (Line)',
+}
 
-const ChartWrapper = styled.div`
-  height: 100%;
-  min-height: 300px;
+const DATA_FREQUENCY = {
+  DAY: 'DAY',
+  HOUR: 'HOUR',
+  LINE: 'LINE',
+}
 
-  @media screen and (max-width: 600px) {
-    min-height: 200px;
-  }
+const TokenChart = ({ address, color, base }) => {
+  // settings for the window and candle width
+  const [chartFilter, setChartFilter] = useState(CHART_VIEW.PRICE)
+  const [frequency, setFrequency] = useState(DATA_FREQUENCY.HOUR)
+
+  const [darkMode] = useDarkModeManager()
+  const textColor = darkMode ? 'white' : 'black'
 
   // reset view on new address
   const addressPrev = usePrevious(address)

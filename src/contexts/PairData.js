@@ -13,16 +13,26 @@ import {
 
 import { useEthPrice } from './GlobalData'
 
-import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
+const UPDATE_PAIR_TXNS = 'UPDATE_PAIR_TXNS'
+const UPDATE_CHART_DATA = 'UPDATE_CHART_DATA'
+const UPDATE_TOP_PAIRS = 'UPDATE_TOP_PAIRS'
+const UPDATE_HOURLY_DATA = 'UPDATE_HOURLY_DATA'
 
-import {
-  getPercentChange,
-  get2DayPercentChange,
-  isAddress,
-  getBlocksFromTimestamps,
-  getTimestampsForChanges,
-  splitQuery,
+dayjs.extend(utc)
+
+export function safeAccess(object, path) {
+  return object
+    ? path.reduce(
+        (accumulator, currentValue) => (accumulator && accumulator[currentValue] ? accumulator[currentValue] : null),
+        object
+      )
+    : null
+}
+
+const PairDataContext = createContext()
+
+function usePairDataContext() {
+  return useContext(PairDataContext)
 }
 
 function reducer(state, { type, payload }) {

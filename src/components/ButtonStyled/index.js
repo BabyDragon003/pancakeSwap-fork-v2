@@ -13,16 +13,26 @@ const Base = styled(RebassButton)`
   border-radius: 12px;
   cursor: pointer;
   outline: none;
-  border: 1px solid transparent;
-  outline: none;
-  border-bottom-right-radius: ${({ open }) => open && '0'};
-  border-bottom-left-radius: ${({ open }) => open && '0'};
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: black;
+  height: 100%;
+  font-weight: 400;
+  &:hover,
+  :focus {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+  &:focus {
+    box-shadow: 0 0 0 1pt rgba(255, 255, 255, 0.25);
+  }
+  &:active {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.25);
+  }
 `
 
-const BaseCustom = styled(RebassButton)`
-  padding: 16px 12px;
-  font-size: 0.825rem;
-  font-weight: 400;
+export default function ButtonStyled({ children, ...rest }) {
   return <Base {...rest}>{children}</Base>
 }
 
