@@ -18,27 +18,6 @@ const Wrapper = styled.div`
   border-radius: 8px;
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  :hover {
-    cursor: pointer;
-  }
-`
-
-const Dropdown = styled.div`
-  position: absolute;
-  top: 34px;
-  padding-top: 40px;
-  width: calc(100% - 40px);
-  background-color: ${({ theme }) => theme.bg1};
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 10px 10px;
-  border-radius: 8px;
-  width: calc(100% - 20px);
-  font-weight: 500;
-  font-size: 1rem;
-  color: black;
-  :hover {
     cursor: pointer;
   }
 `
