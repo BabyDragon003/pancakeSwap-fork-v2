@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import 'feather-icons'
 import { withRouter } from 'react-router-dom'
 import { Text } from 'rebass'
