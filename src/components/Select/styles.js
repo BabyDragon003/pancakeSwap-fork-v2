@@ -13,6 +13,22 @@ export const customStyles = {
     border: 'none',
     boxShadow: 'none',
     ':hover': {
+      borderColor: color.zircon,
+      cursor: 'pointer',
+      overflow: 'hidden',
+    },
+  }),
+  placeholder: (styles) => ({
+    ...styles,
+    color: '#6C7284',
+  }),
+  input: (styles) => ({
+    ...styles,
+    color: '#6C7284',
+    overflow: 'hidden',
+  }),
+  singleValue: (styles) => ({
+    ...styles,
     color: '#6C7284',
     width: '100%',
     paddingRight: '8px',
