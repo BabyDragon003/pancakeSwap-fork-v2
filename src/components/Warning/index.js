@@ -1,4 +1,3 @@
-import React from 'react'
 import 'feather-icons'
 import styled from 'styled-components'
 import { Text } from 'rebass'

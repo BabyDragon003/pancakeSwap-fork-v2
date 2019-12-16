@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import 'feather-icons'
 import { withRouter } from 'react-router-dom'
 import { TYPE } from '../Theme'
