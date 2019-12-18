@@ -4,15 +4,10 @@ import { useDarkModeManager } from '../contexts/LocalStorage'
 import styled from 'styled-components'
 import { Text } from 'rebass'
 
-const theme = (darkMode, color) => ({
-  customColor: color,
-  textColor: darkMode ? color : 'black',
+export default function ThemeProvider({ children }) {
+  const [darkMode] = useDarkModeManager()
 
-  panelColor: darkMode ? 'rgba(255, 255, 255, 0)' : 'rgba(255, 255, 255, 0)',
-  backgroundColor: darkMode ? '#212429' : '#F7F8FA',
-
-  uniswapPink: darkMode ? '#ff007a' : 'black',
-
+  return <StyledComponentsThemeProvider theme={theme(darkMode)}>{children}</StyledComponentsThemeProvider>
   concreteGray: darkMode ? '#292C2F' : '#FAFAFA',
   inputBackground: darkMode ? '#1F1F1F' : '#FAFAFA',
   shadowColor: darkMode ? '#000' : '#2F80ED',

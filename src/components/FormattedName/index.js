@@ -3,16 +3,11 @@ import styled from 'styled-components'
 import { Tooltip } from '../QuestionHelper'
 
 const TextWrapper = styled.div`
-    cursor: pointer;
-  }
+  position: relative;
+  margin-left: ${({ margin }) => margin && '4px'};
+  color: ${({ theme, link }) => (link ? theme.blue : theme.text1)};
+  font-size: ${({ fontSize }) => fontSize ?? 'inherit'};
 
-  @media screen and (max-width: 600px) {
-    font-size: ${({ adjustSize }) => adjustSize && '12px'};
-  }
-`
-
-const FormattedName = ({ text, maxCharacters, margin = false, adjustSize = false, fontSize, link, ...rest }) => {
-  const [showHover, setShowHover] = useState(false)
 
   if (!text) {
     return ''
