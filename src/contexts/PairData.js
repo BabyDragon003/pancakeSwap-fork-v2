@@ -8,6 +8,17 @@ import {
   PAIRS_CURRENT,
   PAIRS_BULK,
   PAIRS_HISTORICAL_BULK,
+  HOURLY_PAIR_RATES,
+} from '../apollo/queries'
+
+import { useEthPrice } from './GlobalData'
+
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+
+import {
+  getPercentChange,
+  get2DayPercentChange,
   isAddress,
   getBlocksFromTimestamps,
   getTimestampsForChanges,
